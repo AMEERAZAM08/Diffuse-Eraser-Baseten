@@ -21,7 +21,7 @@ requirements:
 resources:
   accelerator: A10G
   cpu: '2'
-  memory: 10Gi
+  memory: 24Gi
   use_gpu: true
 system_packages:
   - ffmpeg
