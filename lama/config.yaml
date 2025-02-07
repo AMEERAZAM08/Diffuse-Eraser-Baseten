@@ -18,6 +18,7 @@ requirements:
   - timm==1.0.9
   - matplotlib==3.9.0
   - python-dotenv==1.0.0
+  - einops
 resources:
   accelerator: A10G
   cpu: '2'
