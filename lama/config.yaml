@@ -7,9 +7,9 @@ python_version: py311
 requirements:
   - git+https://github.com/huggingface/diffusers
 resources:
-  accelerator: A100
-  cpu: "12"
-  memory: 144Gi
+  accelerator: A10G
+  cpu: '2'
+  memory: 10Gi
   use_gpu: true
 system_packages:
   - ffmpeg
