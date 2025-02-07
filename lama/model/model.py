@@ -19,8 +19,12 @@ for more contact at https://linktr.ee/ameerazam22
 import base64
 from PIL import Image
 from io import BytesIO
-from simple_lama_inpainting import SimpleLama
 from PIL import Image
+import torch
+from diffusers import DDIMScheduler, DiffusionPipeline
+from diffusers.utils import load_image
+import torch.nn.functional as F
+from utils.utils import remove_objects
 
 class Model:
     def __init__(self, **kwargs):
@@ -30,11 +34,25 @@ class Model:
         # self._data_dir = kwargs["data_dir"]
         # self._config = kwargs["config"]
         # self._secrets = kwargs["secrets"]
-        self.simple_lama = None 
+        self.pipeline = None
+        self.dtype = torch.float16
+        self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu") 
+        self.scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", clip_sample=False, set_alpha_to_one=False)
+        self.model_path = "stabilityai/stable-diffusion-xl-base-1.0"
+
+        # pipeline.enable_attention_slicing()
+        # pipeline.enable_model_cpu_offload()
 
     def load(self):
         # Load model here and assign to self._model.
-        self.simple_lama = SimpleLama()
+        self.pipeline = DiffusionPipeline.from_pretrained(
+            self.model_path,
+            custom_pipeline="pipeline_stable_diffusion_xl_attentive_eraser",  #"./pipelines/pipeline_stable_diffusion_xl_attentive_eraser.py",
+            scheduler=self.scheduler,
+            variant="fp16",
+            use_safetensors=True,
+            torch_dtype=self.dtype,
+        ).to(self.device)
 
 
     def preprocess(self, request):
@@ -76,8 +94,9 @@ class Model:
         try:
 
             mask_img = mask_img.convert('L')
-            result = self.simple_lama(input_img, mask_img)
-            print("Lama done successfully.")
+            result = remove_objects(pipeline=self.pipeline,
+                            edit_images=[input_img,mask_img])
+
         except Exception as e:
             print("Error during model inference:", e)
             return {'error': str(e)}

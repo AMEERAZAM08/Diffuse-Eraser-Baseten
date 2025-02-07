@@ -9,8 +9,8 @@ from io import BytesIO
 def process(input_image_editor):
     image = input_image_editor['background']
     mask = input_image_editor['layers'][0]
-    lama_result = call_api(image, mask)
-    return lama_result
+    api_result = call_api(image, mask)
+    return api_result
 
 
 
@@ -58,7 +58,7 @@ def call_api(image, mask):
         return None
 
 MARKDOWN = """
-# LAMA Inpainting API Baseten 🔥
+# Diffuse Eraser API Baseten 🔥
 """
 
 

@@ -2,16 +2,27 @@ build_commands: []
 environment_variables: {}
 external_package_dirs: []
 model_metadata: {}
-model_name: lama
+model_name: diffuse-eraser
 python_version: py311
 requirements:
-  - simple-lama-inpainting
+  - git+https://github.com/huggingface/diffusers
 resources:
-  accelerator: null
-  cpu: '1'
-  memory: 16Gi
-  use_gpu: false
-secrets: {}
+  accelerator: A100
+  cpu: "12"
+  memory: 144Gi
+  use_gpu: true
 system_packages:
-  - libgl1-mesa-glx
-  - libglib2.0-0
+  - ffmpeg
+  - libsm6
+  - libxext6
+secrets: {}
+
+model_cache:
+  - repo_id: stabilityai/stable-diffusion-xl-base-1.0
+    allow_patterns:
+      - "*.json"
+      - "*.txt"
+      - "text_encoder/model.fp16.safetensors"
+      - "text_encoder_2/model.fp16.safetensors"
+      - "unet/diffusion_pytorch_model.fp16.safetensors"
+      - "vae/diffusion_pytorch_model.fp16.safetensors"
