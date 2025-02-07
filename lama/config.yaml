@@ -1,0 +1,17 @@
+build_commands: []
+environment_variables: {}
+external_package_dirs: []
+model_metadata: {}
+model_name: lama
+python_version: py311
+requirements:
+  - simple-lama-inpainting
+resources:
+  accelerator: null
+  cpu: '1'
+  memory: 16Gi
+  use_gpu: false
+secrets: {}
+system_packages:
+  - libgl1-mesa-glx
+  - libglib2.0-0

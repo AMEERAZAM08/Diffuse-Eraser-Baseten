@@ -1,22 +1,3 @@
-# Deploy-Lama-On-Baseten
-
-# Steps
-[basten-process Truss](https://app.baseten.co/models/deploy)
-
-
-## Input Image 
-Image ![screenshot](./input_image.png)
-## Input Mask 
-Image ![screenshot](./mask_image.png)
-
-## Lama Result from API 
-Image ![screenshot](./lama_output.png)
-
-## Lama Gradio 
-Image ![screenshot](./gradio_screen.png)
-
-
-```python 
 import base64
 import requests
 import os 
@@ -73,8 +54,3 @@ input_mask = Image.open("./mask_image.png")
 lama_result = call_api(input_image, input_mask)
 
 lama_result.save("lama_output.png")
-
-
-```
-
-
