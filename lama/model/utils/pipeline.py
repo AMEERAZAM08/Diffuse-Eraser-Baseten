@@ -6,6 +6,8 @@ from torchvision.transforms.functional import to_tensor, gaussian_blur
 import os 
 
 
+dtype = torch.float16
+
 def preprocess_image(image_path, device):
     image = to_tensor((load_image(image_path)))
     image = image.unsqueeze_(0).float() * 2 - 1 # [0,1] --> [-1,1]
