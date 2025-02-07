@@ -58,6 +58,13 @@ def call_api(image, mask):
 input_image = Image.open("./input_image.png")
 input_mask = Image.open("./mask_image.png")
 
+import time 
+
+st = time.time()
+
 api_result_pil = call_api(input_image, input_mask)
 
 api_result_pil.save("results_output.png")
+
+
+print(" Time Taken ", time.time() - st)
