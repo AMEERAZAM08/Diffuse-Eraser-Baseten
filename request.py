@@ -2,6 +2,8 @@ import base64
 import requests
 import os 
 from PIL import Image
+import base64
+import requests
 
 from io import BytesIO
 def encode_image_to_base64(pil_image):
@@ -31,6 +33,8 @@ def call_api(image, mask):
         headers={"Authorization": f"Api-Key {BASTEN_KEY}"},
         json=payload,
     )
+
+
 
     print("response ",response)
 

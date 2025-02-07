@@ -94,7 +94,7 @@ class Model:
         try:
 
             mask_img = mask_img.convert('L')
-            result = remove_objects(pipeline=self.pipeline,
+            result = remove_objects(pipeline=self.pipeline,device=self.device
                             edit_images=[input_img,mask_img])
 
         except Exception as e:

@@ -25,7 +25,7 @@ def preprocess_mask(mask_path, device):
     mask = mask.to(dtype).to(device)
     return mask
 
-def remove_objects(pipeline,edit_images):
+def remove_objects(pipeline,device,edit_images):
     """
     Runs the attentive eraser pipeline. 
     Returns the processed (inpainted) PIL image.

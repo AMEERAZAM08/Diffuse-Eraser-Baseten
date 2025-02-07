@@ -1,9 +1,0 @@
-import requests
-
-resp = requests.post(
-    "https://model-4w7vg9yw.api.baseten.co/development/predict",
-    headers={"Authorization": "Api-Key xsDjnvu4.TpACquVNEuP7ryCCVj51o80NykaVwYlM"},
-    json="MODEL_INPUT",
-)
-
-print(resp.json())
