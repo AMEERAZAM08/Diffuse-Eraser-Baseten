@@ -1,4 +1,3 @@
-import gradio as gr
 import torch
 from diffusers import DDIMScheduler, DiffusionPipeline
 from diffusers.utils import load_image
