@@ -53,7 +53,7 @@ def call_api(image, mask):
         print(f"Request failed with status code: {response.status_code}")
         print(f"Error message: {response.text}")
         return None
-
+ 
 
 input_image = Image.open("./input_image.png")
 input_mask = Image.open("./mask_image.png")
