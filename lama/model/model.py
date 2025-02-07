@@ -24,7 +24,7 @@ import torch
 from diffusers import DDIMScheduler, DiffusionPipeline
 from diffusers.utils import load_image
 import torch.nn.functional as F
-from model.utils.utils import remove_objects
+from model.utils.pipeline import *
 
 class Model:
     def __init__(self, **kwargs):
