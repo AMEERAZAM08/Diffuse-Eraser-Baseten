@@ -6,6 +6,18 @@ model_name: diffuse-eraser
 python_version: py311
 requirements:
   - git+https://github.com/huggingface/diffusers
+  - torch==2.4.1
+  - opencv-python-headless==4.10.0.84
+  - accelerate==0.34.2
+  - transformers==4.44.2
+  - albumentations==1.4.11
+  - albucore==0.0.12
+  - kornia==0.7.2
+  - peft==0.11.1
+  - safetensors==0.4.3
+  - timm==1.0.9
+  - matplotlib==3.9.0
+  - python-dotenv==1.0.0
 resources:
   accelerator: A10G
   cpu: '2'

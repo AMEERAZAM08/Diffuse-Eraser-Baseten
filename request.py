@@ -42,6 +42,9 @@ def call_api(image, mask):
         output_image_data = base64.b64decode(output_images)
         output_image = Image.open(BytesIO(output_image_data))
         return output_image
+
+    elif response.status_code == 200:
+        raise "Model still building"
     else:
         print(f"Request failed with status code: {response.status_code}")
         print(f"Error message: {response.text}")
